@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Event Menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<img class="logo" src="images/logo.png">
+
+
+<div class="grid">
+
+<button onclick="openMenu('sections')">
+Sections
+</button>
+
+<button onclick="openMenu('bottle')">
+Bottle Menu
+</button>
+
+<button onclick="openMenu('drink')">
+Drink Menu
+</button>
+
+<button onclick="openMenu('food')">
+Food Menu
+</button>
+
+</div>
+
+
+<div id="viewer">
+
+<img id="menuImage">
+
+</div>
+
+
+
+<script>
+
+let sections = [
+"images/section1.png",
+"images/section2.png",
+"images/section3.png",
+"images/section4.png"
+];
+
+
+let slide = 0;
+let timer;
+
+
+function openMenu(type){
+
+clearInterval(timer);
+
+
+let img=document.getElementById("menuImage");
+
+
+if(type=="sections"){
+
+slide=0;
+
+img.src=sections[slide];
+
+
+timer=setInterval(()=>{
+
+slide++;
+
+if(slide>=sections.length)
+slide=0;
+
+
+img.src=sections[slide];
+
+
+},3000);
+
+
+}
+
+
+if(type=="bottle"){
+img.src="images/bottle-menu.png";
+}
+
+
+if(type=="drink"){
+img.src="images/drink-menu.png";
+}
+
+
+if(type=="food"){
+img.src="images/food-menu.png";
+}
+
+
+}
+
+</script>
+
+
+</body>
+</html>
