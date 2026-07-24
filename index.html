@@ -1,112 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Event Menu</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Menu</title>
 
-<link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<img class="logo" src="event-menu/images/logo.png">
+    <!-- Logo -->
+    <img class="logo" src="event-menu/images/logo.png" alt="Logo">
 
+    <!-- Buttons -->
+    <div class="grid">
 
-<div class="grid">
+        <button class="sections-btn" onclick="openMenu('sections')">
+            Sections
+        </button>
 
-<button onclick="openMenu('sections')">
-Sections
-</button>
+        <button onclick="openMenu('bottle')">
+            Bottle Menu
+        </button>
 
-<button onclick="openMenu('bottle')">
-Bottle Menu
-</button>
+        <button onclick="openMenu('drink')">
+            Drink Menu
+        </button>
 
-<button onclick="openMenu('drink')">
-Drink Menu
-</button>
+        <button onclick="openMenu('food')">
+            Food Menu
+        </button>
 
-<button onclick="openMenu('food')">
-Food Menu
-</button>
+        <button onclick="openMenu('hookah')">
+            Hookah Menu
+        </button>
 
-</div>
+    </div>
 
+    <!-- Image Viewer -->
+    <div id="viewer">
+        <img id="menuImage" src="" alt="">
+    </div>
 
-<div id="viewer">
+    <script>
 
-<img id="menuImage">
+        let sections = [
+            "event-menu/images/section_1.jpg",
+            "event-menu/images/section_2.png",
+            "event-menu/images/section_3.png",
+            "event-menu/images/section_4.png"
+        ];
 
-</div>
+        let slide = 0;
+        let timer;
 
+        function openMenu(type) {
 
+            clearInterval(timer);
 
-<script>
+            const img = document.getElementById("menuImage");
 
-let sections = [
-"event-menu/images/section_1.jpg",
-"event-menu/images/section_2.png",
-"event-menu/images/section_3.png",
-"event-menu/images/section_4.png"
-];
+            if (type === "sections") {
 
+                slide = 0;
+                img.src = sections[slide];
 
-let slide = 0;
-let timer;
+                timer = setInterval(() => {
 
+                    slide++;
 
-function openMenu(type){
+                    if (slide >= sections.length)
+                        slide = 0;
 
-clearInterval(timer);
+                    img.src = sections[slide];
 
+                }, 3000);
 
-let img=document.getElementById("menuImage");
+                return;
+            }
 
+            if (type === "bottle") {
+                img.src="event-menu/images/bottle_menu.png";
+            }
 
-if(type=="sections"){
+            if (type === "drink") {
+                img.src="event-menu/images/drink_menu.PNG";
+            }
 
-slide=0;
+            if (type === "food") {
+                img.src="event-menu/images/food_menu.png";
+            }
 
-img.src=sections[slide];
+            if (type === "hookah") {
+                img.src = "event-menu/images/hookah-menu.png";
+            }
 
+        }
 
-timer=setInterval(()=>{
-
-slide++;
-
-if(slide>=sections.length)
-slide=0;
-
-
-img.src=sections[slide];
-
-
-},3000);
-
-
-}
-
-
-if(type=="bottle"){
-img.src="event-menu/images/bottle_menu.png";
-}
-
-
-if(type=="drink"){
-img.src="event-menu/images/drink_menu.PNG";
-}
-
-
-if(type=="food"){
-img.src="event-menu/images/food_menu.png";
-}
-
-
-}
-
-</script>
-
+    </script>
 
 </body>
+
 </html>
